@@ -1,0 +1,241 @@
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-gradient: linear-gradient(135deg, hsl(350, 100%, 73%), #FF91A4);
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --accent: #ff4d6d;
+    --text-dark: #2b2b2b;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-dark);
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 0;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 10;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.navbar a.active {
+    background: var(--accent);
+    color: white;
+}
+
+/* ===== Layout ===== */
+.container {
+    width: 100%;
+    max-width: 520px;
+    padding: 24px;
+    text-align: center;
+    margin-top: 90px;
+}
+
+/* ===== Typography ===== */
+h1 {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    opacity: 0.85;
+    margin-bottom: 30px;
+}
+
+/* ===== Card (Glassmorphism) ===== */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    padding: 32px 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    animation: fadeUp 0.8s ease both;
+}
+
+.card p {
+    font-size: 1.05rem;
+    line-height: 2.5;
+    max-width: 950px;
+    margin-bottom: 16px;
+}
+
+.card h2 {
+    font-size: 1.7rem;
+    margin: 24px 0 10px;
+    color: var(--accent);
+}
+
+/* ===== Buttons ===== */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button.yes {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
+}
+
+button.yes:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+button.no {
+    background: rgba(255, 255, 255, 0.7);
+    color: #333;
+}
+
+button.no:hover {
+    transform: translateY(-3px);
+}
+
+/* ===== Next Button ===== */
+.next {
+    display: inline-block;
+    margin-top: 26px;
+    text-decoration: none;
+    padding: 12px 26px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.next:hover {
+    transform: translateX(6px);
+    box-shadow: 0 12px 30px rgba(255, 77, 109, 0.45);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Mobile Tweaks ===== */
+@media (max-width: 480px) {
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+/* Confetti */
+.confetti {
+    position: fixed;
+    top: -10px;
+    width: 8px;
+    height: 14px;
+    background: white;
+    opacity: 0.8;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    top: 50%;
+    animation: floatUp 3s ease forwards;
+}
+
+@keyframes floatUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+}
+.popup {
+  position: absolute;
+  background: #ffb6c1;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 18px;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.popup.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
