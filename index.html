@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background: #0f0f0f;
+            color: white;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            background: #ff7aa2;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+<body>
+
+    <button class="music-button" onclick="playMusic()">that one song of ours (yes ours) ✨</button>
+
+    <audio id="bg-music" loop>
+        <source src="ruboredyet.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let isPlaying = false;
+
+        function playMusic() {
+            if (isPlaying) return;
+
+            const music = document.getElementById("bg-music");
+            music.volume = 0;
+            music.play();
+
+            let v = 0;
+            const targetVolume = 0.1; // final volume (10%)
+
+            const fade = setInterval(() => {
+                if (v < targetVolume) {
+                    v += 0.01;
+                    music.volume = v;
+                } else {
+                    music.volume = targetVolume;
+                    clearInterval(fade);
+                }
+            }, 200);
+
+            isPlaying = true;
+        }
+    </script>
+
+</body>
+</html>
+<head>
+    <meta charset="UTF-8">
+    <title>For the love of my life saya ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+    <ul>
+        <li><a class="active" href="index.html">homie</a></li>
+        <li><a href="message.html">me being honest</a></li>
+        <li><a href="memories.html">Our Dates</a></li>
+        <li><a href="willyou.html">I LOVE YOU <3 </a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h1>for Wifey, saya. 😏</h1>
+    <p class="subtitle">I made this for you and i hope you like it</p>
+
+    <div class="card">
+        <p>
+            Its not the best,  
+            but i did MY BEST,  
+            and sorry i was late,
+            I LOVE YOU <3 🦦
+        </p>
+
+        <a class="next" href="message.html">Here<33 </a>
+    </div>
+</div>
+
+</body>
+</html>

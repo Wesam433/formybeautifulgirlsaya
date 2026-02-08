@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+     <button class="music-button" onclick="playMusic()"><3</button>
+
+    <audio id="bg-music" loop>
+        <source src="hers.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let isPlaying = false;
+
+        function playMusic() {
+            if (isPlaying) return;
+
+            const music = document.getElementById("bg-music");
+            music.volume = 0;
+            music.play();
+
+            let v = 0;
+            const targetVolume = 0.1; // final volume (10%)
+
+            const fade = setInterval(() => {
+                if (v < targetVolume) {
+                    v += 0.01;
+                    music.volume = v;
+                } else {
+                    music.volume = targetVolume;
+                    clearInterval(fade);
+                }
+            }, 200);
+
+            isPlaying = true;
+        }
+    </script>
+
+</body>
+<title>Our Dates</title>
+<link rel="stylesheet" href="style.css">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #fff8f0;
+        color: #e0dbdb;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        max-width: 600px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #f5f5f5;
+        margin-bottom: 30px;
+    }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    .next {
+        display: block;
+        width: 120px;
+        text-align: center;
+        margin: 40px auto;
+        padding: 12px;
+        background-color: #ff69b4;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .next:hover {
+        background-color: #ff1493;
+    }
+</style>
+</head>
+<body>
+
+<audio id="bg-music" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1>Our Pictures Together!</h1>
+
+    <div class="fade-in">
+        <p>Okay, before anything, these are some pictures I found.</p>
+    </div>
+
+    <div class="fade-in">
+        <p>That's the first personal picture that we ever shared. I remember liking it a lot and being more convinced that you're a girl.</p>
+        <img src="firstpicture.jpg" alt="First personal picture">
+    </div>
+
+    <div class="fade-in">
+        <p>That's our baby (shhh it looks gorgeous).</p>
+        <img src="ourbaby.png" alt="Our baby">
+    </div>
+
+    <div class="fade-in">
+        <p>That was our first picnic ever! (Omg, you looked so pretty)</p>
+        <img src="uspicnic.png" alt="Our picnic">
+    </div>
+
+    <div class="fade-in">
+        <p>And look, that was the first time we held hands &lt;3</p>
+        <img src="ourhand.jpg" alt="Holding hands">
+    </div>
+
+    <div class="fade-in">
+        <p>Here's our first birthday party together &lt;3</p>
+        <img src="firstbday.png" alt="First birthday party">
+    </div>
+
+    <div class="fade-in">
+        <p>Our first time going on a date :O</p>
+        <img src="ustogether.png" alt="First date">
+    </div>
+
+    <div class="fade-in">
+        <p>And last but not least, that's our drawing on that one day, remember?</p>
+        <img src="ourdrawing.png" alt="Our drawing">
+    </div>
+
+    <a class="next fade-in" href="willyou.html">now.. pookie</a>
+</div>
+
+<script>
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+        threshold: 0.3
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+</script>
+
+</body>
+</html>
