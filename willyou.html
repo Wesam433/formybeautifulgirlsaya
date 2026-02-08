@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="style.css">
+<body>
+
+    <button onclick="playMusic()">🎉</button>
+
+    <audio id="bg-music" loop>
+        <source src="ilyso.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let isPlaying = false;
+
+        function playMusic() {
+            if (isPlaying) return;
+
+            const music = document.getElementById("bg-music");
+            music.volume = 0;
+            music.play();
+
+            let v = 0;
+            const targetVolume = 0.1; // final volume (10%)
+
+            const fade = setInterval(() => {
+                if (v < targetVolume) {
+                    v += 0.01;
+                    music.volume = v;
+                } else {
+                    music.volume = targetVolume;
+                    clearInterval(fade);
+                }
+            }, 200);
+
+            isPlaying = true;
+        }
+    </script>
+
+</body>
+
+<h1>willll-... </h1>
+<script src="script.js"></script>
+
+<div class="card">
+    <h2>Will you be mine forever and ever?</h2>
+
+    <div class="buttons">
+        <button class="yes" onclick="yesClicked()">Yes 💕</button>
+        <button class="no" onmouseover="moveNo(this)">No 🙈</button>
+    </div>
+</div>
+<div id="cutePopup" class="popup">Hey 😳</div>
+
